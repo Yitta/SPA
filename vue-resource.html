@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script src="node_modules/vue-resource/dist/vue-resource.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <title>mall</title>
+</head>
+
+<body>
+    <div id="app" class="container">
+        <h1>VUE-RESOURCE PLUG-IN</h1>
+        <a href="javascript:;" class="btn btn-primary" v-on:click="get">GET</a>
+    </div>
+</body>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            msg: ''
+        },
+        methods: {
+            get: function () {
+                this.$http.get("package.json", {
+                    params: {
+                        userId: 123
+                    },
+                    headers: {
+                        tocken: 1234
+                    },
+                }).then(
+                    res => {
+                        this.msg = res.data
+                    },
+                    error => {
+                        this.msg = error
+                    }
+                )
+            }
+        }
+    })
+</script>
+
+</html>
